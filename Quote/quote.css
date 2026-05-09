@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -13,10 +14,12 @@ body {
   background: #020409;
   color: white;
   overflow-x: hidden;
+  min-width: 320px;
 }
 
 .hero {
   min-height: 96vh;
+  min-height: 96svh;
   background:
     linear-gradient(90deg, rgba(0,0,0,.96), rgba(0,0,0,.44), rgba(0,0,0,.78)),
     url("elite-cover.png");
@@ -132,6 +135,8 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 52px;
+  text-align: center;
 }
 
 .primary,
@@ -448,11 +453,25 @@ textarea {
   background: #020409;
   color: white;
   font-size: 16px;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 textarea {
   min-height: 130px;
   resize: vertical;
+}
+
+select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, #38bdf8 50%),
+    linear-gradient(135deg, #38bdf8 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) 50%,
+    calc(100% - 14px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 42px;
 }
 
 input:focus,
@@ -499,6 +518,7 @@ small {
 @media (max-width: 950px) {
   .hero {
     background-position: center right;
+    min-height: auto;
   }
 
   .elite-bar,
@@ -546,7 +566,7 @@ small {
     position: fixed;
     left: 12px;
     right: 12px;
-    bottom: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
     z-index: 99;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -556,6 +576,7 @@ small {
     border-radius: 999px;
     padding: 8px;
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
   }
 
   .mobile-actions a {
@@ -569,17 +590,20 @@ small {
   }
 
   body {
-    padding-bottom: 80px;
+    padding-bottom: calc(86px + env(safe-area-inset-bottom));
   }
 }
 
 @media (max-width: 600px) {
   nav {
-    padding: 20px 5%;
+    padding: max(16px, env(safe-area-inset-top)) 5% 16px;
+    align-items: flex-start;
   }
 
   .logo {
-    font-size: 14px;
+    max-width: 150px;
+    font-size: 13px;
+    line-height: 1.25;
   }
 
   .nav-text {
@@ -587,8 +611,10 @@ small {
   }
 
   .nav-btn {
-    font-size: 13px;
-    padding: 10px 13px;
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 12px;
+    white-space: nowrap;
   }
 
   .hero-overlay,
@@ -603,16 +629,25 @@ small {
     padding-right: 5%;
   }
 
+  .hero-overlay {
+    align-items: flex-end;
+    min-height: auto;
+    padding-top: 36px;
+  }
+
   h1 {
-    font-size: 46px;
+    font-size: clamp(38px, 12vw, 46px);
+    line-height: .94;
   }
 
   h2 {
-    font-size: 38px;
+    font-size: clamp(32px, 10vw, 38px);
+    line-height: 1.02;
   }
 
   .hero-content {
-    margin-top: 40px;
+    margin-top: 0;
+    padding-bottom: 54px;
   }
 
   .hero-content p,
@@ -628,6 +663,47 @@ small {
     padding: 24px;
   }
 
+  .buttons,
+  .closing .buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .btn,
+  button {
+    width: 100%;
+  }
+
+  .hero-proof {
+    gap: 8px;
+  }
+
+  .hero-proof span {
+    font-size: 11px;
+    padding: 9px 10px;
+  }
+
+  .section,
+  .split,
+  .quote,
+  .closing,
+  .proof-section,
+  .gallery-proof,
+  .process {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .elite-bar div {
+    padding: 18px 5%;
+  }
+
+  .elite-bar strong,
+  .elite-bar span {
+    line-height: 1.35;
+  }
+
   .card,
   .feature-box,
   .benefits div,
@@ -638,11 +714,61 @@ small {
   .gallery-grid img,
   .gallery-grid img:first-child {
     grid-column: auto;
-    height: 300px;
+    height: min(118vw, 430px);
+    object-position: center;
   }
 
   .gallery-grid img:nth-child(2) {
     grid-column: auto;
-    height: 300px;
+    height: min(118vw, 430px);
+  }
+
+  .contact a,
+  input,
+  select,
+  textarea {
+    min-height: 48px;
+  }
+
+  .mobile-actions {
+    left: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+
+  .mobile-actions a {
+    min-height: 44px;
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .logo {
+    max-width: 128px;
+    font-size: 12px;
+  }
+
+  .nav-btn {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.6px;
+  }
+
+  .hero-content p,
+  .section-text,
+  .split p,
+  .quote-copy p,
+  .proof-copy p,
+  .steps p {
+    font-size: 16px;
   }
 }
