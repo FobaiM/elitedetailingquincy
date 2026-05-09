@@ -9,16 +9,16 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   background: #020409;
   color: white;
   overflow-x: hidden;
 }
 
 .hero {
-  min-height: 100vh;
+  min-height: 96vh;
   background:
-    linear-gradient(90deg, rgba(0,0,0,.95), rgba(0,0,0,.25), rgba(0,0,0,.85)),
+    linear-gradient(90deg, rgba(0,0,0,.96), rgba(0,0,0,.44), rgba(0,0,0,.78)),
     url("elite-cover.png");
   background-size: cover;
   background-position: center;
@@ -28,17 +28,18 @@ body {
 nav {
   position: relative;
   z-index: 5;
-  padding: 26px 6%;
+  padding: 22px 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 18px;
 }
 
 .logo {
   color: white;
   text-decoration: none;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 1.6px;
   font-size: 20px;
 }
 
@@ -57,53 +58,56 @@ nav {
   color: white;
   text-decoration: none;
   padding: 12px 18px;
-  border: 1px solid #168cff;
+  border: 1px solid rgba(22, 140, 255, .78);
   border-radius: 999px;
   font-weight: 900;
   box-shadow: 0 0 25px rgba(22,140,255,.35);
 }
 
 .hero-overlay {
-  min-height: calc(100vh - 80px);
+  min-height: calc(96vh - 76px);
   display: flex;
   align-items: center;
   padding: 0 6%;
 }
 
 .hero-content {
-  max-width: 720px;
-  margin-top: 80px;
+  max-width: 780px;
+  margin-top: 32px;
+  padding-bottom: 90px;
 }
 
 .eyebrow {
-  color: #168cff;
+  color: #38bdf8;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2.4px;
   font-weight: 900;
   font-size: 13px;
   margin-bottom: 16px;
 }
 
 h1 {
-  font-size: clamp(52px, 8vw, 104px);
-  line-height: .88;
+  font-size: clamp(50px, 7.5vw, 96px);
+  line-height: .9;
   text-transform: uppercase;
-  letter-spacing: -4px;
+  letter-spacing: 0;
   margin-bottom: 26px;
   text-shadow: 0 0 30px rgba(0,0,0,.9);
 }
 
 h2 {
-  font-size: clamp(38px, 5vw, 72px);
-  line-height: .95;
-  letter-spacing: -3px;
+  font-size: clamp(36px, 5vw, 66px);
+  line-height: .98;
+  letter-spacing: 0;
   margin-bottom: 22px;
 }
 
 .hero-content p,
 .section-text,
 .split p,
-.quote-copy p {
+.quote-copy p,
+.proof-copy p,
+.steps p {
   color: #cbd5e1;
   font-size: 19px;
   line-height: 1.7;
@@ -125,6 +129,9 @@ button {
   font-weight: 950;
   cursor: pointer;
   transition: .25s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .primary,
@@ -138,11 +145,31 @@ button {
   color: white;
   border: 1px solid rgba(255,255,255,.32);
   background: rgba(255,255,255,.08);
+  backdrop-filter: blur(12px);
 }
 
 .btn:hover,
 button:hover {
   transform: translateY(-3px);
+}
+
+.hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.hero-proof span {
+  color: #e5f4ff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 10px 13px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 999px;
+  background: rgba(0,0,0,.42);
 }
 
 .elite-bar {
@@ -152,8 +179,8 @@ button:hover {
   z-index: 10;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border: 1px solid #006eff;
-  border-radius: 14px;
+  border: 1px solid rgba(0,110,255,.78);
+  border-radius: 8px;
   overflow: hidden;
   background: rgba(0,0,0,.78);
   backdrop-filter: blur(14px);
@@ -161,7 +188,7 @@ button:hover {
 }
 
 .elite-bar div {
-  padding: 24px;
+  padding: 22px;
   border-right: 1px solid rgba(0,110,255,.35);
 }
 
@@ -185,7 +212,10 @@ button:hover {
 .section,
 .split,
 .quote,
-.closing {
+.closing,
+.proof-section,
+.gallery-proof,
+.process {
   padding: 105px 6%;
 }
 
@@ -193,6 +223,10 @@ button:hover {
   background:
     radial-gradient(circle at right, rgba(0,102,255,.18), transparent 35%),
     #020409;
+}
+
+.section-text {
+  max-width: 940px;
 }
 
 .cards {
@@ -205,7 +239,7 @@ button:hover {
 .card {
   min-height: 310px;
   padding: 32px;
-  border-radius: 28px;
+  border-radius: 8px;
   background: linear-gradient(180deg, #0a1020, #030712);
   border: 1px solid rgba(255,255,255,.1);
   box-shadow: 0 30px 80px rgba(0,0,0,.35);
@@ -217,7 +251,7 @@ button:hover {
 }
 
 .card p {
-  color: #168cff;
+  color: #38bdf8;
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
@@ -242,6 +276,40 @@ button:hover {
   font-size: 24px;
 }
 
+.proof-section {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 46px;
+  align-items: start;
+  background: #050915;
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.benefits div,
+.steps div {
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  padding: 26px;
+  background: rgba(255,255,255,.045);
+}
+
+.benefits strong,
+.steps strong {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.benefits span {
+  color: #cbd5e1;
+  line-height: 1.65;
+}
+
 .split {
   display: grid;
   grid-template-columns: 1fr .8fr;
@@ -257,7 +325,7 @@ button:hover {
 .feature-box {
   border: 1px solid rgba(22,140,255,.45);
   background: rgba(0,0,0,.7);
-  border-radius: 30px;
+  border-radius: 8px;
   padding: 34px;
   box-shadow: 0 0 55px rgba(0,102,255,.18);
 }
@@ -271,12 +339,66 @@ button:hover {
 .feature-box li {
   font-size: 18px;
   color: #dbeafe;
+  line-height: 1.45;
 }
 
 .feature-box li::before {
   content: "◆";
   color: #168cff;
   margin-right: 12px;
+}
+
+.gallery-proof {
+  background: #020409;
+}
+
+.gallery-grid {
+  margin-top: 38px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 26px 70px rgba(0,0,0,.36);
+  grid-column: span 2;
+}
+
+.gallery-grid img:first-child {
+  grid-column: span 3;
+  height: 520px;
+}
+
+.gallery-grid img:nth-child(2) {
+  grid-column: span 3;
+  height: 520px;
+}
+
+.process {
+  background:
+    radial-gradient(circle at left, rgba(56,189,248,.16), transparent 32%),
+    #050915;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 38px;
+}
+
+.steps span {
+  display: block;
+  color: #38bdf8;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
 }
 
 .quote {
@@ -296,7 +418,7 @@ button:hover {
   color: white;
   text-decoration: none;
   padding: 16px 18px;
-  border-radius: 16px;
+  border-radius: 8px;
   background: rgba(255,255,255,.06);
   border: 1px solid rgba(22,140,255,.3);
   font-weight: 800;
@@ -305,7 +427,7 @@ button:hover {
 form {
   background: linear-gradient(180deg, rgba(15,23,42,.95), rgba(2,6,23,.95));
   border: 1px solid rgba(22,140,255,.45);
-  border-radius: 32px;
+  border-radius: 8px;
   padding: 34px;
   box-shadow: 0 35px 100px rgba(0,0,0,.55);
 }
@@ -321,7 +443,7 @@ select,
 textarea {
   width: 100%;
   padding: 16px;
-  border-radius: 14px;
+  border-radius: 8px;
   border: 1px solid rgba(255,255,255,.12);
   background: #020409;
   color: white;
@@ -366,6 +488,10 @@ small {
   margin: 0 auto 30px;
 }
 
+.center {
+  justify-content: center;
+}
+
 .mobile-actions {
   display: none;
 }
@@ -378,7 +504,11 @@ small {
   .elite-bar,
   .cards,
   .split,
-  .quote {
+  .quote,
+  .proof-section,
+  .benefits,
+  .steps,
+  .gallery-grid {
     grid-template-columns: 1fr;
   }
 
@@ -394,7 +524,22 @@ small {
   }
 
   h1 {
-    letter-spacing: -2px;
+    letter-spacing: 0;
+  }
+
+  .hero-content {
+    padding-bottom: 64px;
+  }
+
+  .gallery-grid img,
+  .gallery-grid img:first-child {
+    grid-column: auto;
+    height: 360px;
+  }
+
+  .gallery-grid img:nth-child(2) {
+    grid-column: auto;
+    height: 360px;
   }
 
   .mobile-actions {
@@ -450,13 +595,16 @@ small {
   .section,
   .split,
   .quote,
-  .closing {
+  .closing,
+  .proof-section,
+  .gallery-proof,
+  .process {
     padding-left: 5%;
     padding-right: 5%;
   }
 
   h1 {
-    font-size: 50px;
+    font-size: 46px;
   }
 
   h2 {
@@ -467,7 +615,34 @@ small {
     margin-top: 40px;
   }
 
+  .hero-content p,
+  .section-text,
+  .split p,
+  .quote-copy p,
+  .proof-copy p,
+  .steps p {
+    font-size: 17px;
+  }
+
   form {
     padding: 24px;
+  }
+
+  .card,
+  .feature-box,
+  .benefits div,
+  .steps div {
+    padding: 24px;
+  }
+
+  .gallery-grid img,
+  .gallery-grid img:first-child {
+    grid-column: auto;
+    height: 300px;
+  }
+
+  .gallery-grid img:nth-child(2) {
+    grid-column: auto;
+    height: 300px;
   }
 }
